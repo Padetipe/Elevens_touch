@@ -31,7 +31,7 @@ body, html {
 h1 {
     position: absolute;
     padding-left: 40%;
-    font-family: papyrus;      
+    font-family: 'Cinzel Decorative','cursive';      
 }
 
 p.motto {
@@ -229,17 +229,17 @@ footer {
     }
 
     h1  {
-        font-size: 38px;
+        font-size: 34px;
         position: absolute;
         bottom: 62%;
-        left: -6%;
+        left: -10%;
     }
 
     .menu-icon {
         display: block; /* Ensure the menu icon is visible */
         position: fixed; /* Position it absolutely */
-        top: 226px; /* Adjust top position */
-        right: 370px; /* Adjust right position */
+        top: 25.5%; /* Adjust top position */
+        right: 88%; /* Adjust right position */
     }
      
 
@@ -267,6 +267,6 @@ footer {
 
     .user-icon {
         margin-top: 20px; /* Adjust margin for mobile */
-        padding-left: 55%;
+        padding-left: 60%;
     }
 }
