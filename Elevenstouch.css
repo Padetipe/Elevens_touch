@@ -215,6 +215,7 @@ footer {
     .navbar {
         flex-direction: column; /* Stack navbar items vertically */
         align-items: flex-start; /* Align items to the left */
+
     }
 
     .logo {
@@ -224,21 +225,21 @@ footer {
 
     p.motto {
         text-align: left;
-        padding-bottom: 5%;
+        padding-bottom: 5%;        
     }
 
     h1  {
-        font-size: 60px;
+        font-size: 38px;
         position: absolute;
-        bottom: 48%;
-        left: -10%;
+        bottom: 62%;
+        left: -6%;
     }
 
     .menu-icon {
         display: block; /* Ensure the menu icon is visible */
-        position: absolute; /* Position it absolutely */
-        top: 231px; /* Adjust top position */
-        right: 665px; /* Adjust right position */
+        position: fixed; /* Position it absolutely */
+        top: 226px; /* Adjust top position */
+        right: 370px; /* Adjust right position */
     }
      
 
@@ -254,18 +255,18 @@ footer {
 
     .search-bar {
         width: 100%; /* Full width for mobile */
-        margin: 10px 0; /* Adjust margin for mobile */
+        margin: 20px 0; /* Adjust margin for mobile */
     }
 
     .lefticons {
         align-items: flex-start; /* Reset padding for mobile */
-        gap: 120px; /* Reduce gap between icons */
+        gap: 70px; /* Reduce gap between icons */
         padding-left: 15%;
         padding-top: 2%;
     }
 
     .user-icon {
         margin-top: 20px; /* Adjust margin for mobile */
-        padding-left: 75%;
+        padding-left: 55%;
     }
 }
