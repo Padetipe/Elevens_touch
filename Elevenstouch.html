@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevens Touch</title>
+    <link rel="stylesheet" href="Elevenstouch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="https://i.postimg.cc/Vk47gKnj/ET.png" alt="Logo" class="logo-image">
+            <h1>Elevens Touch</h1>
+            <p class="motto"><em>Styling you to a Ten and more. . .</em></p>
+            <!-- Menu Icon -->
+        <div class="menu-icon" id="menu-icon">
+            <i class="fas fa-bars"></i> <!-- Font Awesome bars icon -->
+        </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." class="search-input">
+                <button class="search-button">
+                    <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+                </button>
+            </div>
+        </div>
+
+        <div class="lefticons">
+            <i class="fa-regular fa-user"></i>
+            <i class="fa-regular fa-bookmark"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-regular fa-circle-question"></i>
+        </div>
+        
+        <!-- Navigation Links -->
+        <nav class="nav-container" id="nav-container">
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#shop">SHOP</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- JavaScript for Toggle -->
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navContainer = document.getElementById('nav-container');
+
+        menuIcon.addEventListener('click', () => {
+            navContainer.classList.toggle('active');
+        });
+    </script>
+</body>
+
+<footer><address>© 2025 Elevens Touch. All rights reserved.</address></footer>
+</html>
