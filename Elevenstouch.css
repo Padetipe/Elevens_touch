@@ -238,7 +238,7 @@ footer {
     .menu-icon {
         display: block; /* Ensure the menu icon is visible */
         position: fixed; /* Position it absolutely */
-        top: 25.5%; /* Adjust top position */
+        top: 24%; /* Adjust top position */
         right: 88%; /* Adjust right position */
     }
      
