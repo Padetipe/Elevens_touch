@@ -36,6 +36,7 @@ h1 {
 
 p.motto {
     font-family: Arial, Helvetica, sans-serif;
+    align-items: flex-start;
 }
 
 .motto {
@@ -223,6 +224,7 @@ footer {
 
     .menu-icon {
         display: block; /* Ensure the menu icon is visible */
+        align-items: left;
     }
 
     .nav-container {
@@ -241,12 +243,13 @@ footer {
     }
 
     .lefticons {
-        padding-left: 0; /* Reset padding for mobile */
-        gap: 20px; /* Reduce gap between icons */
+        align-items: center; /* Reset padding for mobile */
+        gap: 50px; /* Reduce gap between icons */
         justify-content: center; /* Center icons */
     }
 
     .user-icon {
-        margin-top: 10px; /* Adjust margin for mobile */
+        margin-top: 20px; /* Adjust margin for mobile */
+        align-items: right;
     }
 }
