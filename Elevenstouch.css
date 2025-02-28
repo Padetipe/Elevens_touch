@@ -204,3 +204,49 @@ footer {
 #scroll-to-top:hover {
     background-color: #003366;
 }
+
+
+
+
+
+/* Styles for mobile devices (screen width less than 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack navbar items vertically */
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .logo {
+        width: 100%; /* Make the logo take full width */
+        text-align: center; /* Center the logo content */
+    }
+
+    .menu-icon {
+        display: block; /* Ensure the menu icon is visible */
+    }
+
+    .nav-container {
+        position: static; /* Reset position for mobile */
+        width: 100%; /* Full width for mobile */
+        display: none; /* Hide the nav links by default */
+    }
+
+    .nav-container.active {
+        display: block; /* Show the nav links when active */
+    }
+
+    .search-bar {
+        width: 100%; /* Full width for mobile */
+        margin: 10px 0; /* Adjust margin for mobile */
+    }
+
+    .lefticons {
+        padding-left: 0; /* Reset padding for mobile */
+        gap: 20px; /* Reduce gap between icons */
+        justify-content: center; /* Center icons */
+    }
+
+    .user-icon {
+        margin-top: 10px; /* Adjust margin for mobile */
+    }
+}
