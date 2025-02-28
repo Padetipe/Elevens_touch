@@ -128,9 +128,39 @@ p.motto {
 
 .lefticons {
    display: flex;   
-   margin: 0 5%;
+   margin: 0 0;
+   padding-left: 45%;
    gap: 120px;
    transform: scale(1.2); /* Increase size by 20% */
+}
+
+
+/* User Icon Styles */
+.user-icon {
+    margin-left: 20px; /* Adjust spacing as needed */
+    margin-top: 135px;
+}
+
+.user-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white; /* Icon and text color */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.user-link:hover {
+    color: #cf74ba; /* Change color on hover */
+}
+
+.user-link i {
+    font-size: 24px; /* Icon size */
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.user-text {
+    font-size: 14px; /* Text size */
 }
 
 /* Footer Styling */
