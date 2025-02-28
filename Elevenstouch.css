@@ -211,7 +211,7 @@ footer {
 
 
 /* Styles for mobile devices (screen width less than 768px) */
-@media (max-width: 768px) {
+@media (max-width: 810px) {
     .navbar {
         flex-direction: column; /* Stack navbar items vertically */
         align-items: flex-start; /* Align items to the left */
@@ -222,10 +222,25 @@ footer {
         text-align: center; /* Center the logo content */
     }
 
+    p.motto {
+        text-align: left;
+        padding-bottom: 5%;
+    }
+
+    h1  {
+        font-size: 60px;
+        position: absolute;
+        bottom: 48%;
+        left: -10%;
+    }
+
     .menu-icon {
         display: block; /* Ensure the menu icon is visible */
-        align-items: left;
+        position: absolute; /* Position it absolutely */
+        top: 231px; /* Adjust top position */
+        right: 665px; /* Adjust right position */
     }
+     
 
     .nav-container {
         position: static; /* Reset position for mobile */
@@ -243,13 +258,14 @@ footer {
     }
 
     .lefticons {
-        align-items: center; /* Reset padding for mobile */
-        gap: 50px; /* Reduce gap between icons */
-        justify-content: center; /* Center icons */
+        align-items: flex-start; /* Reset padding for mobile */
+        gap: 120px; /* Reduce gap between icons */
+        padding-left: 15%;
+        padding-top: 2%;
     }
 
     .user-icon {
         margin-top: 20px; /* Adjust margin for mobile */
-        align-items: right;
+        padding-left: 75%;
     }
 }
