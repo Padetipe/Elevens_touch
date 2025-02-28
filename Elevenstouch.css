@@ -231,14 +231,14 @@ footer {
     h1  {
         font-size: 34px;
         position: fixed;
-        bottom: 86.5%;
+        bottom: 88%;
         left: -10%;
     }
 
     .menu-icon {
         display: block; /* Ensure the menu icon is visible */
         position: fixed; /* Position it absolutely */
-        top: 24.5%; /* Adjust top position */
+        top: 24.8%; /* Adjust top position */
         right: 88%; /* Adjust right position */
     }
      
