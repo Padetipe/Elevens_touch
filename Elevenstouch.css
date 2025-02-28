@@ -230,8 +230,8 @@ footer {
 
     h1  {
         font-size: 34px;
-        position: absolute;
-        bottom: 62%;
+        position: fixed;
+        bottom: 86.5%;
         left: -10%;
     }
 
