@@ -9,10 +9,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header (same as index.html) -->
-    <header class="navbar">
-        <!-- Copy the entire header section from index.html -->
-    </header>
+   <!-- Header Section -->
+<header class="navbar">
+    <!-- Logo and Branding -->
+    <div class="logo-brand">
+        <img src="https://i.postimg.cc/Vk47gKnj/ET.png" alt="Logo" class="logo-image">
+        <div class="brand-text">
+            <h1>ELEVENS TOUCH</h1>
+            <p class="motto">Styling you to a Ten and more...</p>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." class="search-input">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Icons -->
+    <div class="nav-icons">
+        <a href="#account" class="nav-icon"><i class="fa-regular fa-user"></i></a>
+        <a href="#wishlist" class="nav-icon"><i class="fa-regular fa-bookmark"></i></a>
+        <a href="#cart" class="nav-icon cart-icon"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <div class="menu-icon" id="menu-icon">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="nav-container" id="nav-container">
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="shop.html">SHOP</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <li class="mobile-auth"><a href="#signin">SIGN IN / SIGN UP</a></li>
+        </ul>
+    </nav>
+</header>
 
     <!-- Contact Main Content -->
     <main class="contact-main">
