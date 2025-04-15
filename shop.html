@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Elevens Touch</title>
+    <link rel="stylesheet" href="Elevenstouch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header (same as our fixed navbar) -->
+    <header class="navbar">
+        <!-- Copy the navbar HTML from previous solution -->
+    </header>
+
+    <!-- Shop Main Content -->
+    <main class="shop-page">
+        <div class="shop-header">
+            <h1>OUR COLLECTION</h1>
+            <div class="shop-controls">
+                <button class="filter-toggle" id="filter-toggle">
+                    <i class="fas fa-sliders-h"></i> Filters
+                </button>
+                <div class="sort-options">
+                    <label for="sort">Sort by:</label>
+                    <select id="sort">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="shop-container">
+            <!-- Filters Sidebar -->
+            <aside class="filters-sidebar" id="filters-sidebar">
+                <div class="filter-section">
+                    <h3><i class="fas fa-list-ul"></i> CATEGORIES</h3>
+                    <ul class="filter-list">
+                        <li><a href="#" class="active">Dresses</a></li>
+                        <li><a href="#">Tops</a></li>
+                        <li><a href="#">Bottoms</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+
+                <div class="filter-section">
+                    <h3><i class="fas fa-tag"></i> PRICE</h3>
+                    <div class="price-range">
+                        <input type="range" min="0" max="500" value="500" id="price-slider">
+                        <div class="price-values">
+                            <span>$0</span>
+                            <span>$500+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3><i class="fas fa-ruler"></i> SIZE</h3>
+                    <div class="size-options">
+                        <button>XS</button>
+                        <button>S</button>
+                        <button class="active">M</button>
+                        <button>L</button>
+                        <button>XL</button>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3><i class="fas fa-palette"></i> COLOR</h3>
+                    <div class="color-options">
+                        <button style="background-color: #3d1d22;" title="Burgundy"></button>
+                        <button style="background-color: #f2d9dd;" title="Blush"></button>
+                        <button style="background-color: #000000;" title="Black"></button>
+                        <button style="background-color: #ffffff; border: 1px solid #ddd;" title="White"></button>
+                        <button style="background-color: #cf74ba;" title="Lilac"></button>
+                    </div>
+                </div>
+
+                <button class="apply-filters">Apply Filters</button>
+                <button class="reset-filters">Reset All</button>
+            </aside>
+
+            <!-- Products Grid -->
+            <section class="products-grid">
+                <div class="product-grid" id="product-grid">
+                    <!-- Products will be loaded via JavaScript -->
+                </div>
+                
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Your footer content -->
+    </footer>
+
+    <script src="Elevenstouch.js"></script>
+</body>
+</html>

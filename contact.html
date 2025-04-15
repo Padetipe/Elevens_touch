@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Elevens Touch</title>
+    <link rel="stylesheet" href="Elevenstouch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header class="navbar">
+        <!-- Copy the entire header section from index.html -->
+    </header>
+
+    <!-- Contact Main Content -->
+    <main class="contact-main">
+        <section class="contact-hero">
+            <h1>Get In Touch</h1>
+            <p>We'd love to hear from you</p>
+        </section>
+
+        <section class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Our Boutique</h3>
+                    <p>123 Fashion Avenue<br>New York, NY 10001</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Phone</h3>
+                    <p>(212) 555-0111</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>hello@elevens-touch.com</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Hours</h3>
+                    <p>Monday - Friday: 10am - 8pm<br>
+                    Saturday: 10am - 6pm<br>
+                    Sunday: 12pm - 5pm</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Send Us A Message</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256018234!2d-73.98784492453727!3d40.74844097138992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1623251157711!5m2!1sen!2sus" 
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+
+        <section class="faq-teaser">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What is your return policy?</h3>
+                    <p>We accept returns within 30 days of purchase with original tags attached. Please see our Returns page for details.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you offer international shipping?</h3>
+                    <p>Yes, we ship worldwide. Shipping costs and delivery times vary by destination.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How can I track my order?</h3>
+                    <p>You'll receive a tracking number via email once your order ships.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you have physical stores?</h3>
+                    <p>Our flagship boutique is located in New York City. See above for address and hours.</p>
+                </div>
+            </div>
+            <a href="faq.html" class="cta-button secondary">View All FAQs</a>
+        </section>
+    </main>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <!-- Copy the entire footer section from index.html -->
+    </footer>
+
+    <!-- Shopping Cart Sidebar (same as index.html) -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <!-- Copy the entire cart sidebar from index.html -->
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Auth Modal (same as index.html) -->
+    <div class="auth-modal" id="auth-modal">
+        <!-- Copy the entire auth modal from index.html -->
+    </div>
+
+    <script src="Elevenstouch.js"></script>
+    <script>
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will respond soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
