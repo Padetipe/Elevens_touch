@@ -128,6 +128,7 @@ const products = [
         colors: ["light blue", "medium wash"],
         new: true
     },
+    
     // ... (all other products from shop.js here)
 ];
 
@@ -333,13 +334,13 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.color-options button').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            // You would implement color filtering here
+            //   color filtering here
         });
     });
 
     // Apply filters button
     document.querySelector('.apply-filters').addEventListener('click', function() {
-        // In a real app, you would apply all active filters
+        // apply all active filters
         filtersSidebar.classList.remove('active');
         body.classList.remove('no-scroll');
     });
@@ -354,9 +355,190 @@ function displayProducts() {
     const productGrid = document.getElementById('product-grid');
     productGrid.innerHTML = '';
 
-    // Sample products - in a real app you would fetch these from an API
+    // Sample products , fetch these from an API
     const products = [
-        // Your product data here
+             // Dresses
+            {
+                id: 101,
+                title: "Silk Slip Evening Gown",
+                price: 45000,
+                image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9",
+                category: "dresses",
+                tags: ["new", "bestseller"],
+                description: "Luxury silk slip dress with delicate lace trim",
+                sizes: ["S", "M", "L"],
+                colors: ["#3d1d22", "#000000"],
+                material: "100% Silk"
+            },
+            {
+                id: 102,
+                title: "Floral Maxi Dress",
+                price: 38000,
+                image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b",
+                category: "dresses",
+                tags: ["new"],
+                description: "Flowy floral print dress with adjustable waist tie",
+                sizes: ["XS", "S", "M", "L"],
+                colors: ["#800020", "#f2d9dd"],
+                material: "Polyester blend"
+            },
+        
+            // Tops
+            {
+                id: 201,
+                title: "Cashmere Turtleneck",
+                price: 32000,
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
+                category: "tops",
+                tags: ["bestseller"],
+                description: "Ultra-soft cashmere turtleneck in classic colors",
+                sizes: ["XS", "S", "M", "L", "XL"],
+                colors: ["#3d1d22", "#f5f5dc", "#d3d3d3"],
+                material: "100% Cashmere"
+            },
+            {
+                id: 202,
+                title: "Silk Blouse with Bow",
+                price: 28000,
+                image: "https://images.unsplash.com/photo-1554412933-514a83d2f3c8",
+                category: "tops",
+                tags: ["new"],
+                description: "Elegant silk blouse with front bow detail",
+                sizes: ["S", "M", "L"],
+                colors: ["#ffffff", "#f2d9dd"],
+                material: "100% Silk"
+            },
+        
+            // Bottoms
+            {
+                id: 301,
+                title: "Tailored Wool Trousers",
+                price: 35000,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a",
+                category: "bottoms",
+                tags: ["bestseller"],
+                description: "High-waisted wool trousers with perfect drape",
+                sizes: ["XS", "S", "M", "L"],
+                colors: ["#000000", "#3d1d22"],
+                material: "Wool blend"
+            },
+            {
+                id: 302,
+                title: "Leather Mini Skirt",
+                price: 42000,
+                image: "https://images.unsplash.com/photo-1604644401890-0bd678c83788",
+                category: "bottoms",
+                tags: ["new"],
+                description: "Buttery soft genuine leather A-line skirt",
+                sizes: ["S", "M"],
+                colors: ["#3d1d22", "#000000"],
+                material: "Genuine leather"
+            },
+        
+            // Outerwear
+            {
+                id: 401,
+                title: "Wool Blend Coat",
+                price: 65000,
+                image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9",
+                category: "outerwear",
+                tags: ["new", "bestseller"],
+                description: "Double-breasted wool coat with notched lapels",
+                sizes: ["S", "M", "L"],
+                colors: ["#3d1d22", "#000000"],
+                material: "Wool blend"
+            },
+            {
+                id: 402,
+                title: "Faux Fur Jacket",
+                price: 58000,
+                image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9",
+                category: "outerwear",
+                tags: ["new"],
+                description: "Luxurious faux fur jacket with satin lining",
+                sizes: ["XS", "S", "M", "L"],
+                colors: ["#f5f5dc", "#d3d3d3"],
+                material: "Faux fur"
+            },
+        
+            // Accessories
+            {
+                id: 501,
+                title: "Structured Leather Handbag",
+                price: 55000,
+                image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7",
+                category: "accessories",
+                tags: ["bestseller"],
+                description: "Premium leather handbag with gold-tone hardware",
+                colors: ["#3d1d22", "#000000"],
+                material: "Genuine leather"
+            },
+            {
+                id: 502,
+                title: "Silk Scarf Set",
+                price: 18000,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a",
+                category: "accessories",
+                tags: ["new"],
+                description: "Set of 3 luxury silk scarves in seasonal prints",
+                colors: ["multi"],
+                material: "100% Silk"
+            },
+        
+            // Shoes
+            {
+                id: 601,
+                title: "Leather Ankle Boots",
+                price: 48000,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55df2",
+                category: "shoes",
+                tags: ["bestseller"],
+                description: "Italian leather ankle boots with block heel",
+                sizes: ["36", "37", "38", "39", "40"],
+                colors: ["#000000", "#3d1d22"],
+                material: "Genuine leather"
+            },
+            {
+                id: 602,
+                title: "Strappy Heeled Sandals",
+                price: 42000,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55df2",
+                category: "shoes",
+                tags: ["new"],
+                description: "Elegant strappy sandals with comfortable heel",
+                sizes: ["36", "37", "38", "39"],
+                colors: ["#f2d9dd", "#cf74ba"],
+                material: "Suede"
+            },
+        
+            // Sale Items
+            {
+                id: 701,
+                title: "Cashmere Sweater (Sale)",
+                price: 25000,
+                originalPrice: 35000,
+                image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9",
+                category: "tops",
+                tags: ["sale"],
+                description: "Luxury cashmere sweater in seasonal color",
+                sizes: ["S", "M", "L"],
+                colors: ["#cf74ba", "#f2d9dd"],
+                material: "100% Cashmere"
+            },
+            {
+                id: 702,
+                title: "Wide-Leg Trousers (Sale)",
+                price: 22000,
+                originalPrice: 32000,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a",
+                category: "bottoms",
+                tags: ["sale"],
+                description: "Tailored wide-leg trousers with satin stripe",
+                sizes: ["S", "M"],
+                colors: ["#3d1d22"],
+                material: "Wool blend"
+            },
+         //more product data here
     ];
 
     products.forEach(product => {
