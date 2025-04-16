@@ -29,6 +29,48 @@ const cartCount = document.querySelector('.cart-count');
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+
+
+// New arrivals
+async function loadNewArrivals() {
+    const newArrivalsContainer = document.getElementById('featured-products');
+    
+    try {
+        // Use local products as fallback
+        const newProducts = products.filter(p => p.new || (p.tags && p.tags.includes("new")));
+        newArrivalsContainer.innerHTML = '';
+        
+        if (newProducts.length === 0) {
+            newArrivalsContainer.innerHTML = '<p class="error">No new arrivals found</p>';
+            return;
+        }
+        
+        newProducts.forEach(product => {
+            newArrivalsContainer.innerHTML += `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.title}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-price">₦${product.price.toLocaleString()}</p>
+                        <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                    </div>
+                </div>
+            `;
+        });
+        
+        // Add event listeners
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', addToCart);
+        });
+    } catch (error) {
+        console.error("Error loading new arrivals:", error);
+        newArrivalsContainer.innerHTML = '<p class="error">Error loading products</p>';
+    }
+}
+
+
 // Sample product data
 const products = [
     {
@@ -39,8 +81,61 @@ const products = [
         category: 'dresses',
         new: true
     },
-    // ... (keep all your other products from shop.js here)
+    {
+        id: 101,
+        title: "Pleated Midi Skirt",
+        price: 22500,
+        image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&auto=format",
+        category: "dresses",
+        tags: ["new"],
+        description: "High-waisted design with stretchy waistband",
+        sizes: ["S", "M", "L"],
+        colors: ["#000000", "#3d1d22", "#800020"],
+        new: true
+    },
+    {
+        id: 102,
+        title: "Structured Handbag",
+        price: 31800,
+        image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&auto=format",
+        category: "accessories",
+        tags: ["new"],
+        description: "Genuine leather with gold-tone hardware",
+        colors: ["#3d1d22", "#000000"],
+        new: true
+    },
+    {
+        id: 103,
+        title: "Oversized Knit Cardigan",
+        price: 27900,
+        image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=600&auto=format",
+        category: "tops",
+        tags: ["new"],
+        description: "100% cotton with dropped shoulders",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["#f5f5dc", "#d3d3d3", "#8b4513"],
+        new: true
+    },
+    {
+        id: 104,
+        title: "Embroidered Denim Jacket",
+        price: 34500,
+        image: "https://images.unsplash.com/photo-1604644401890-0bd678c83788?w=600&auto=format",
+        category: "tops",
+        tags: ["new"],
+        description: "Vintage wash with hand-stitched floral embroidery",
+        sizes: ["S", "M", "L"],
+        colors: ["light blue", "medium wash"],
+        new: true
+    },
+    // ... (all other products from shop.js here)
 ];
+
+
+
+
+
+
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
@@ -341,7 +436,7 @@ function displayFeaturedProducts() {
     const featuredContainer = document.getElementById('featured-products');
     
     // Display first 4 products as featured
-    products.slice(0, 4).forEach(product => {
+    products.slice(0, 5).forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
         productCard.innerHTML = `
@@ -419,3 +514,42 @@ window.addEventListener('scroll', () => {
 scrollToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+
+
+
+// Product rendering function
+function renderProduct(product) {
+    return `
+      <div class="product-card" data-id="${product.id}">
+        <div class="product-badge-container">
+          ${product.tags?.includes('new') ? '<span class="product-badge new">New</span>' : ''}
+          ${product.tags?.includes('bestseller') ? '<span class="product-badge bestseller">Bestseller</span>' : ''}
+        </div>
+        <img src="${product.image}" alt="${product.title}" loading="lazy">
+        <div class="product-info">
+          <h3>${product.title}</h3>
+          <p class="price">₦${product.price.toLocaleString('en-NG')}</p>
+          <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+          <a href="/products/detail.html?id=${product.id}" class="view-details">View Details</a>
+        </div>
+      </div>
+    `;
+  }
+  
+  // Category filtering
+  async function loadCategory(category) {
+    const productsContainer = document.getElementById('products-container');
+    productsContainer.innerHTML = '<div class="loading-spinner"></div>';
+    
+    const q = query(collection(db, "products"), 
+      where("category", "==", category));
+    const querySnapshot = await getDocs(q);
+    
+    productsContainer.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      productsContainer.innerHTML += renderProduct(doc.data());
+    });
+  }
+  
+  
