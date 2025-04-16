@@ -1153,6 +1153,29 @@ h2.section-title::after {
     margin-bottom: 1rem;
 }
 
+.products-section {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+/* Center the pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Ensure the product grid is properly aligned */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Adjust as needed */
+}
+
 .sale-price {
     color: #cf74ba;
     margin-right: 0.5rem;
