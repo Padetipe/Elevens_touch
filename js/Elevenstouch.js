@@ -34,41 +34,33 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 // New arrivals
 async function loadNewArrivals() {
     const newArrivalsContainer = document.getElementById('featured-products');
-    
-    try {
-        // Use local products as fallback
-        const newProducts = products.filter(p => p.new || (p.tags && p.tags.includes("new")));
-        newArrivalsContainer.innerHTML = '';
-        
-        if (newProducts.length === 0) {
-            newArrivalsContainer.innerHTML = '<p class="error">No new arrivals found</p>';
-            return;
-        }
-        
-        newProducts.forEach(product => {
-            newArrivalsContainer.innerHTML += `
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.title}">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">${product.title}</h3>
-                        <p class="product-price">₦${product.price.toLocaleString()}</p>
-                        <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
-                    </div>
+    const newProducts = products.filter(p => p.new || (p.tags && p.tags.includes("new")));
+
+    newArrivalsContainer.innerHTML = ''; // Clear existing products
+
+    newProducts.forEach(product => {
+        newArrivalsContainer.innerHTML += `
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.title}">
                 </div>
-            `;
-        });
-        
-        // Add event listeners
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', addToCart);
-        });
-    } catch (error) {
-        console.error("Error loading new arrivals:", error);
-        newArrivalsContainer.innerHTML = '<p class="error">Error loading products</p>';
-    }
+                <div class="product-info">
+                    <h3 class="product-title">${product.title}</h3>
+                    <p class="product-price">₦${product.price.toLocaleString()}</p>
+                    <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                </div>
+            </div>
+        `;
+    });
+
+    // Add event listeners to "Add to Cart" buttons
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', addToCart);
+    });
 }
+
+// Call the function to load products
+document.addEventListener('DOMContentLoaded', loadNewArrivals);
 
 
 // Sample product data
@@ -82,7 +74,7 @@ const products = [
         new: true
     },
     {
-        id: 101,
+        id: 2,
         title: "Pleated Midi Skirt",
         price: 22500,
         image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&auto=format",
@@ -94,7 +86,7 @@ const products = [
         new: true
     },
     {
-        id: 102,
+        id: 3,
         title: "Structured Handbag",
         price: 31800,
         image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&auto=format",
@@ -105,7 +97,7 @@ const products = [
         new: true
     },
     {
-        id: 103,
+        id: 4,
         title: "Oversized Knit Cardigan",
         price: 27900,
         image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=600&auto=format",
@@ -117,7 +109,7 @@ const products = [
         new: true
     },
     {
-        id: 104,
+        id: 5,
         title: "Embroidered Denim Jacket",
         price: 34500,
         image: "https://images.unsplash.com/photo-1604644401890-0bd678c83788?w=600&auto=format",
@@ -132,6 +124,31 @@ const products = [
     // ... (all other products from shop.js here)
 ];
 
+
+function startCarousel() {
+    const carousel = document.querySelector('.carousel');
+    const productCards = document.querySelectorAll('.carousel .product-card');
+    let scrollAmount = 0;
+
+    if (!carousel || productCards.length === 0) return; // Exit if no carousel or products are present
+
+    const productWidth = productCards[0].offsetWidth + 30; // Width of one product + gap
+
+    setInterval(() => {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+        if (scrollAmount >= maxScroll) {
+            scrollAmount = 0; // Reset to the start
+        } else {
+            scrollAmount += productWidth; // Scroll by one product's width
+        }
+
+        carousel.style.transform = `translateX(-${scrollAmount}px)`;
+    }, 3000); // Adjust the interval (3000ms = 3 seconds)
+}
+
+// Initialize the carousel when the page loads
+document.addEventListener('DOMContentLoaded', startCarousel);
 
 
 
@@ -540,6 +557,8 @@ function displayProducts() {
             },
          //more product data here
     ];
+
+    
 
     products.forEach(product => {
         const productCard = document.createElement('div');

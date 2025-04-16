@@ -1483,3 +1483,37 @@ h2.section-title::after {
         height: 200px;
     }
 }
+
+
+
+/* Carousel Container */
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+/* Product Grid Items */
+.carousel .product-card {
+    flex: 0 0 calc(25% - 30px); /* 4 items per row */
+    max-width: calc(25% - 30px);
+}
+
+/* Hide Scrollbar */
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+.carousel-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
