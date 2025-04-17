@@ -237,6 +237,11 @@ const products = [
         price: 20000,
         image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b',
         category: 'dresses',
+        description: 'A stunning evening gown perfect for formal occasions.',
+        material: '100% Silk',
+        colors: ['Red', 'Black'],
+        sizes: ['S', 'M', 'L'],
+        units: 10,
         new: true,
         newArrival: true
     },
@@ -478,15 +483,13 @@ function renderProduct(product) {
         <div class="product-card" data-id="${product.id}">
             <div class="product-image">
                 ${badge}
-                <img src="${product.image}" alt="${product.title}" loading="lazy">               
+                <img src="${product.image}" alt="${product.title}" loading="lazy">
             </div>
             <div class="product-info">
-             <button class="wishlist-btn" data-id="${product.id}">
-                    <i class="fa-regular fa-heart"></i>
-                </button>
                 <h3 class="product-title">${product.title}</h3>
                 <p class="product-price">₦${product.price.toLocaleString()}</p>
                 <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                <a href="product-detail.html?id=${product.id}" class="view-details-btn">View Details</a>
             </div>
         </div>
     `;
