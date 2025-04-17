@@ -1883,7 +1883,7 @@ h2.section-title::after {
     color: #cf74ba;
 }
 
-.cta-button {
+.auth-cta-button {
     display: block;
     width: 100%;
     padding: 12px;
@@ -1915,4 +1915,6 @@ h2.section-title::after {
 .auth-footer a:hover {
     text-decoration: underline;
 }
+
+
 
