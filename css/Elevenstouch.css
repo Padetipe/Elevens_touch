@@ -7,7 +7,7 @@ body, html {
     color: rgb(61, 29, 34);
     line-height: 1.6;
 }
-
+about-main
 /* Typography */
 h1, h2, h3, h4 {
     font-family: 'Cinzel Decorative', cursive;
@@ -2162,5 +2162,23 @@ h2.section-title::after {
 @media (max-width: 768px) {
     .product-details-container {
         grid-template-columns: 1fr; 
+    }
+    .product-detail-image img {
+        height: 400px; 
+    }
+}
+
+
+/* Hide the Filters button on larger screens */
+@media (min-width: 768px) {
+    .filter-toggle {
+        display: none;
+    }
+}
+
+/* Ensure the Filters button is visible on smaller screens */
+@media (max-width: 767px) {
+    .filter-toggle {
+        display: flex;
     }
 }
