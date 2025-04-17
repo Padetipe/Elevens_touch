@@ -684,15 +684,18 @@ const tabBtns = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
 if (authLink && authModal) {
+    // Open the modal
     authLink.addEventListener('click', (e) => {
         e.preventDefault();
         authModal.classList.add('active');
     });
 
+    // Close the modal
     closeAuth.addEventListener('click', () => {
         authModal.classList.remove('active');
     });
 
+    // Switch between tabs
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const tabId = btn.getAttribute('data-tab');
@@ -705,12 +708,54 @@ if (authLink && authModal) {
         });
     });
 
+    // Close modal when clicking outside the content
     authModal.addEventListener('click', (e) => {
         if (e.target === authModal) {
             authModal.classList.remove('active');
         }
     });
 }
+
+// =====================
+// USER AUTHENTICATION (LOGIN & REGISTRATION)
+// =====================
+
+// Simulated user database
+const users = JSON.parse(localStorage.getItem('users')) || [];
+
+// Handle registration
+document.getElementById('register-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = e.target.querySelector('input[placeholder="Full Name"]').value;
+    const email = e.target.querySelector('input[placeholder="Email"]').value;
+    const password = e.target.querySelector('input[placeholder="Password"]').value;
+
+    if (users.some(user => user.email === email)) {
+        alert('User already exists. Please log in.');
+        return;
+    }
+
+    users.push({ name, email, password });
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Registration successful! Please log in.');
+    e.target.reset();
+});
+
+// Handle login
+document.getElementById('login-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = e.target.querySelector('input[placeholder="Email"]').value;
+    const password = e.target.querySelector('input[placeholder="Password"]').value;
+
+    const user = users.find(user => user.email === email && user.password === password);
+
+    if (user) {
+        alert(`Welcome back, ${user.name}!`);
+        authModal.classList.remove('active');
+    } else {
+        alert('Invalid email or password. Please try again.');
+    }
+});
 
 // =====================
 // NEWSLETTER FORM
