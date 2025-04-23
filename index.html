@@ -24,12 +24,14 @@
         <!-- Search Bar -->
         <div class="search-container">
             <div class="search-bar">
-                <input type="text" placeholder="Search..." class="search-input">
+                <input type="text" class="search-input" placeholder="Search for products...">
                 <button class="search-button">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
         </div>
+        
+        <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
     
         <!-- Icons -->
         <div class="nav-icons">
@@ -207,6 +209,7 @@
     <div class="wishlist-items" id="wishlist-items">
         <!-- Wishlist items will be loaded here -->
     </div>
+    <button class="share-wishlist-btn">Share Wishlist</button>
 </div>
 <div class="wishlist-overlay" id="wishlist-overlay"></div>
 
@@ -258,7 +261,7 @@
         </div>
     </div>
 </div>
-
+<div id="loading-spinner" class="loading-spinner"></div>
     <script src="js/Elevenstouch.js"></script>
 </body>
 </html>

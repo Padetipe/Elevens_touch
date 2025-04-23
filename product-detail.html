@@ -22,12 +22,14 @@
         <!-- Search Bar -->
         <div class="search-container">
             <div class="search-bar">
-                <input type="text" placeholder="Search..." class="search-input">
+                <input type="text" class="search-input" placeholder="Search for products...">
                 <button class="search-button">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
         </div>
+
+        <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
     
         <!-- Icons -->
         <div class="nav-icons">
@@ -71,10 +73,21 @@
             <ul id="product-specifications"></ul>
         </section>
 
-        <section class="customer-feedback">
-            <h2>Customer Feedback</h2>
-            <div id="customer-feedback"></div>
-        </section>
+        <div class="reviews-section">
+            <h3>Customer Reviews</h3>
+            <div id="reviews-container"></div>
+            <form id="review-form">
+                <textarea id="review-text" placeholder="Write your review..." required></textarea>
+                <select id="review-rating">
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
     </main>
 
     <!-- Footer -->

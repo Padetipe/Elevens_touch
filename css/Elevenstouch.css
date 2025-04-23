@@ -2176,9 +2176,66 @@ h2.section-title::after {
     }
 }
 
-/* Ensure the Filters button is visible on smaller screens */
+
 @media (max-width: 767px) {
     .filter-toggle {
         display: flex;
     }
+}
+
+.reviews-section {
+    margin-top: 20px;
+}
+
+#reviews-container {
+    margin-bottom: 20px;
+}
+
+#review-form textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#review-form select, #review-form button {
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .product-card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.loading-spinner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #cf74ba;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

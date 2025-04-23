@@ -18,6 +18,13 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
+
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+});
+
 // =====================
 // SHOPPING CART SYSTEM
 // =====================
@@ -237,6 +244,18 @@ document.querySelectorAll('.wishlist-btn').forEach(btn => {
 
 wishlistOverlay.addEventListener('click', hideWishlist);
 closeWishlist.addEventListener('click', hideWishlist);
+
+
+
+
+
+function shareWishlist() {
+    const wishlistLink = `${window.location.origin}/wishlist.html?items=${encodeURIComponent(JSON.stringify(wishlist))}`;
+    navigator.clipboard.writeText(wishlistLink);
+    alert('Wishlist link copied to clipboard!');
+}
+
+document.querySelector('.share-wishlist-btn').addEventListener('click', shareWishlist);
 
 // =====================
 // PRODUCT DATA
@@ -510,6 +529,49 @@ function renderProduct(product) {
 }
 
 // =====================
+// Review FUNCTIONS
+// =====================
+const reviews = JSON.parse(localStorage.getItem('reviews')) || {};
+
+function loadReviews(productId) {
+    const reviewsContainer = document.getElementById('reviews-container');
+    if (!reviewsContainer) return;
+
+    reviewsContainer.innerHTML = '';
+    const productReviews = reviews[productId] || [];
+
+    if (productReviews.length === 0) {
+        reviewsContainer.innerHTML = '<p>No reviews yet. Be the first to review this product!</p>';
+        return;
+    }
+
+    productReviews.forEach(review => {
+        const reviewElement = document.createElement('div');
+        reviewElement.className = 'review';
+        reviewElement.innerHTML = `
+            <p>${review.text}</p>
+            <p>Rating: ${'⭐'.repeat(review.rating)}</p>
+        `;
+        reviewsContainer.appendChild(reviewElement);
+    });
+}
+
+document.getElementById('review-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const productId = parseInt(new URLSearchParams(window.location.search).get('id'));
+    const text = document.getElementById('review-text').value;
+    const rating = parseInt(document.getElementById('review-rating').value);
+
+    if (!reviews[productId]) reviews[productId] = [];
+    reviews[productId].push({ text, rating });
+
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+    loadReviews(productId);
+    e.target.reset();
+    alert('Review submitted!');
+});
+
+// =====================
 // PRODUCT DISPLAY FUNCTIONS
 // =====================
 function loadNewArrivals() {
@@ -618,6 +680,32 @@ function applyFilters() {
     if (!productGrid) return;
 
     productGrid.innerHTML = ''; 
+
+    function searchProducts(query) {
+        const productGrid = document.getElementById('product-grid');
+        if (!productGrid) return;
+    
+        productGrid.innerHTML = ''; 
+        const filteredProducts = products.filter(product =>
+            product.title.toLowerCase().includes(query.toLowerCase()) ||
+            product.category.toLowerCase().includes(query.toLowerCase())
+        );
+    
+        if (filteredProducts.length === 0) {
+            productGrid.innerHTML = '<p>No products match your search.</p>';
+            return;
+        }
+    
+        filteredProducts.forEach(product => {
+            productGrid.innerHTML += renderProduct(product);
+        });
+    
+        addEventListenersToProducts();
+    }
+    
+    document.querySelector('.search-input').addEventListener('input', function () {
+        searchProducts(this.value);
+    });
 
     // Filter products based on the selected criteria
     const filteredProducts = products.filter(product => {
@@ -983,6 +1071,19 @@ function setupShopFilters() {
     // Reset all filters button
     document.querySelector('.reset-filters')?.addEventListener('click', resetAllFilters);
 }
+
+function showSpinner() {
+    document.getElementById('loading-spinner').style.display = 'block';
+}
+
+function hideSpinner() {
+    document.getElementById('loading-spinner').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    showSpinner();
+    setTimeout(hideSpinner, 1000); 
+});
 
 
      
