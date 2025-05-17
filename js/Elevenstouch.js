@@ -22,7 +22,14 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
-    themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    const icon = themeToggle.querySelector('i'); 
+    if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
 });
 
 // =====================
@@ -255,7 +262,7 @@ function shareWishlist() {
     alert('Wishlist link copied to clipboard!');
 }
 
-document.querySelector('.share-wishlist-btn').addEventListener('click', shareWishlist);
+//document.querySelector('.share-wishlist-btn').addEventListener('click', shareWishlist);
 
 // =====================
 // PRODUCT DATA
@@ -789,9 +796,9 @@ function sortProducts(criteria) {
     addEventListenersToProducts(); 
 }
     
-    document.getElementById('sort')?.addEventListener('change', function() {
-        sortProducts(this.value);
-    });
+    document.getElementById('sort')?.addEventListener('change', function () {
+    sortProducts(this.value);
+});
     
     document.getElementById('price-slider')?.addEventListener('input', function() {
         filterByPrice(this.value);
@@ -829,7 +836,7 @@ function sortProducts(criteria) {
     
     document.querySelector('.reset-filters')?.addEventListener('click', resetAllFilters);
 
-
+    setupShopFilters
 // =====================
 // CAROUSEL FUNCTIONALITY
 // =====================
@@ -1085,6 +1092,47 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(hideSpinner, 1000); 
 });
 
+function loadProductDetails() {
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get('id'));
+
+    if (!productId) {
+        console.error('Product ID is missing in the URL.');
+        document.querySelector('.product-details').innerHTML = '<p>Product not found.</p>';
+        return;
+    }
+
+    const product = products.find(p => p.id === productId);
+
+    if (!product) {
+        console.error(`Product with ID ${productId} not found.`);
+        document.querySelector('.product-details').innerHTML = '<p>Product not found.</p>';
+        return;
+    }
+
+    // Populate product details
+    document.getElementById('product-image').src = product.image;
+    document.getElementById('product-title').textContent = product.title;
+    document.getElementById('product-price').textContent = `₦${product.price.toLocaleString()}`;
+    document.getElementById('product-units').textContent = `Available Units: ${product.units}`;
+    document.getElementById('product-description').textContent = product.description;
+
+    // Populate specifications
+    const specifications = document.getElementById('product-specifications');
+    specifications.innerHTML = `
+        <li><strong>Material:</strong> ${product.material || 'N/A'}</li>
+        <li><strong>Colors:</strong> ${product.colors?.join(', ') || 'N/A'}</li>
+        <li><strong>Sizes:</strong> ${product.sizes?.join(', ') || 'N/A'}</li>
+    `;
+
+    // Add event listener for "Add to Cart" button
+    document.getElementById('add-to-cart-btn').addEventListener('click', () => addToCart({ target: { getAttribute: () => product.id } }));
+}
+
+// Call the function on product-detail.html
+if (window.location.pathname.includes('product-detail.html')) {
+    document.addEventListener('DOMContentLoaded', loadProductDetails);
+}
 
      
     

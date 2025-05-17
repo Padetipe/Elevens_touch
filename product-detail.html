@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <div id="loading-spinner" class="loading-spinner"></div>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,9 +28,11 @@
                     <i class="fas fa-search"></i>
                 </button>
             </div>
+        </div>  
+        
+        <div class="theme-toggle-icon" id="theme-toggle">
+            <i class="fas fa-moon"></i>  
         </div>
-
-        <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
     
         <!-- Icons -->
         <div class="nav-icons">
@@ -109,6 +112,7 @@
                     <li><a href="shipping.html">Shipping & Returns</a></li>
                     <li><a href="sizing.html">Size Guide</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
+                    <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
                 </ul>
             </div>
             <div class="footer-section">
@@ -220,36 +224,6 @@
 </div>
 
     <script src="js/Elevenstouch.js"></script>
-    <script>
-        // Fetch product details based on the ID in the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = parseInt(urlParams.get('id'));
-        const product = products.find(p => p.id === productId);
-
-        if (product) {
-            document.getElementById('product-image').src = product.image;
-            document.getElementById('product-title').textContent = product.title;
-            document.getElementById('product-price').textContent = `Price: ₦${product.price.toLocaleString()}`;
-            document.getElementById('product-units').textContent = `Units Left: ${product.units || 'In Stock'}`;
-            document.getElementById('product-description').textContent = product.description || 'No description available.';
-            document.getElementById('product-specifications').innerHTML = `
-                <li>Category: ${product.category}</li>
-                <li>Material: ${product.material || 'N/A'}</li>
-                <li>Colors: ${product.colors?.join(', ') || 'N/A'}</li>
-                <li>Sizes: ${product.sizes?.join(', ') || 'N/A'}</li>
-            `;
-            document.getElementById('customer-feedback').innerHTML = `
-                <p>No customer feedback available yet.</p>
-            `;
-
-            // Add to cart functionality
-            document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-                addToCart({ target: { getAttribute: () => productId } });
-                alert(`${product.title} has been added to your cart!`);
-            });
-        } else {
-            document.querySelector('.product-details').innerHTML = '<p>Product not found.</p>';
-        }
-    </script>
+    
 </body>
 </html>
