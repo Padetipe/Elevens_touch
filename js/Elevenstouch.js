@@ -5,18 +5,34 @@ const menuIcon = document.getElementById('menu-icon');
 const navContainer = document.getElementById('nav-container');
 const body = document.body;
 
-menuIcon.addEventListener('click', () => {
+// Toggle menu
+menuIcon.addEventListener('click', (e) => {
+    e.stopPropagation(); // Important to prevent immediate close
     navContainer.classList.toggle('active');
     body.classList.toggle('no-scroll');
 });
 
-// Close menu when clicking on a link
+// Prevent clicks inside nav from closing it
+navContainer.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Close the menu when clicking anywhere outside
+document.addEventListener('click', () => {
+    if (navContainer.classList.contains('active')) {
+        navContainer.classList.remove('active');
+        body.classList.remove('no-scroll');
+    }
+});
+
+// Close menu when clicking on any link inside
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navContainer.classList.remove('active');
         body.classList.remove('no-scroll');
     });
 });
+
 
 
 const themeToggle = document.getElementById('theme-toggle');
